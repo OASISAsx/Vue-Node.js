@@ -13,7 +13,7 @@ import SideBar from '@/components/SideBar.vue'
 
 export default {
   components: {
-    SideBar
+    // SideBar
   },
   data() {
     return {
@@ -26,5 +26,6 @@ export default {
 }
 </script>
 
-<style lang="">
+<style lang="scss" scoped>
+
 </style>
