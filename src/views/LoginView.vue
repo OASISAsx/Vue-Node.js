@@ -73,6 +73,7 @@
 
 <script>
 import router from "@/router";
+import { message } from "ant-design-vue";
 import axios from "axios";
 
 export default {
@@ -93,16 +94,15 @@ export default {
         });
         const token = response.data.token;
         const user = response.data.user;
-
         // Save token to localStorage
         localStorage.setItem("authtoken", token);
-
         // Convert user object to string before saving it in localStorage
         localStorage.setItem("user", JSON.stringify(user));
-
-        // Redirect after successful login
         router.push("/");
         window.location.reload();
+       await message.success("ล็อกอินสำเร็จ")
+        // Redirect after successful login
+       
       } catch (error) {
         console.error(error);
         // Handle login error

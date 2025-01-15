@@ -1,13 +1,10 @@
 <template>
   <div class="sign-in">
-    <a-card
-       style="align-items: center; justify-content: center; width: 399px;"
-    >
+    <a-card style="align-items: center; justify-content: center; width: 399px">
       <template #title>
         <h5 class="font-semibold text-center">Register With</h5>
       </template>
-      <div class="sign-up-gateways">
-      </div>
+      <div class="sign-up-gateways"></div>
       <p class="text-center my-25 font-semibold text-muted">Or</p>
       <a-form
         id="components-form-demo-normal-login"
@@ -24,7 +21,7 @@
               },
             ]"
             placeholder="Name"
-			v-model:value="formValues.username"
+            v-model:value="formValues.username"
           >
           </a-input>
         </a-form-item>
@@ -39,7 +36,7 @@
               },
             ]"
             placeholder="Email"
-			 v-model:value="formValues.email"
+            v-model:value="formValues.email"
           >
           </a-input>
         </a-form-item>
@@ -55,7 +52,7 @@
             ]"
             type="password"
             placeholder="Password"
-			 v-model:value="formValues.password"
+            v-model:value="formValues.password"
           >
           </a-input>
         </a-form-item>
@@ -98,31 +95,35 @@
 <script>
 import router from "@/router";
 import axios from "axios";
+import { message } from "ant-design-vue";
 export default {
   data() {
     return {
-		formValues: {
+      formValues: {
         username: "",
         password: "",
-		email: ""
+        email: "",
       },
-	};
+    };
   },
 
   methods: {
     // Handles input validation after submission.
     async handleSubmit() {
       try {
-        const response = await axios.post(`${import.meta.env.VITE_API}/register`, {
-          username: this.formValues.username, // ใช้ข้อมูลจาก formValues
-          password: this.formValues.password,
-		  email: this.formValues.email,
-        });
-        const token = response.data.token;
-        // Save token to localStorage
-        localStorage.setItem("authtoken", token);
-        router.push("/login");
-        window.location.relsoad();
+        const response = await axios.post(
+          `${import.meta.env.VITE_API}/register`,
+          {
+            username: this.formValues.username, // ใช้ข้อมูลจาก formValues
+            password: this.formValues.password,
+            email: this.formValues.email,
+          }
+        );
+        if (response.status === 200) {
+          router.push("/login");
+          await message.success("ลงทะเบียนสำเร็จ");
+        }
+
         // Redirect or do something else after successful login
       } catch (error) {
         console.error(error);
