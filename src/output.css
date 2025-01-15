@@ -64,6 +64,7 @@ html,
 body {
   margin: 0;
   /* 1 */
+  width: 100vh;
   line-height: inherit;
   /* 2 */
 }

@@ -2,7 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import Navbar from '../src/components/Navbar.vue'
 
-import '@/output.css'
+// import '@/output.css'
 // import HelloWorld from './components/HelloWorld.vue'
 </script>
 
@@ -16,12 +16,10 @@ import '@/output.css'
 
 </template>
 
-<style scoped>
+<style>
 
 /* .App {
-display: flex;
-justify-items: center;
-align-items: center;
+width: 100vh;
 } */
 
 
