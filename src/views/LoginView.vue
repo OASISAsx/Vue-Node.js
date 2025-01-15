@@ -98,9 +98,12 @@ export default {
         localStorage.setItem("authtoken", token);
         // Convert user object to string before saving it in localStorage
         localStorage.setItem("user", JSON.stringify(user));
-        router.push("/");
+        if (response.status === 200) {
+          router.push("/login");
         window.location.reload();
        await message.success("ล็อกอินสำเร็จ")
+        }
+       
         // Redirect after successful login
        
       } catch (error) {
